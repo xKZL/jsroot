@@ -135,17 +135,14 @@
                 use_zstd = false;
          }
 
-         if ((window.location.protocol == "file:") || (window.location.host.indexOf('rawgit.com') >= 0)) {
+         if (window.location.protocol == "file:") {
             scripts = "../scripts/";
             jsroot_path = "../index.htm";
             demo_path = "../demo/",
-            filepath = "https://root.cern/js/files/";
+            filepath = "https://jsroot.gsi.de/files/";
             use_requirejs = false;
             icon.setAttribute('src', "../img/RootIcon.ico");
          }
-
-         if (window.location.protocol == "file:")
-            filepath = "https://jsroot.gsi.de/files/";
 
          document.getElementsByTagName("head")[0].appendChild(icon);
 
@@ -235,8 +232,8 @@
                keyid = select_key || 'TH1'; optid = -1;
                testfile = testobj = null;
                let ii = JSROOT.decodeUrl().get("interval");
-               if (ii && !isNaN(parseInt(ii))) testinterval = parseInt(ii);
-                                          else testinterval = interval;
+               if (ii && Number.isInteger(parseInt(ii))) testinterval = parseInt(ii);
+                                                    else testinterval = interval;
                if (running) return;
                return JSROOT.require("hierarchy").then(() => RunBigTest(0));
             }
@@ -246,7 +243,7 @@
 
             if (!keyid) return; // this is indication of test break
 
-            if ((interval === undefined) || isNaN(interval) || (typeof interval !== "number")) interval = testinterval;
+            if (!Number.isInteger(interval)) interval = testinterval;
             if (interval > 0)
                return setTimeout(() => RunBigTest(0), interval);
 
@@ -392,7 +389,7 @@
                div.textContent = key;
                content.appendChild( div );
 
-               let url = "", filename = "", itemname = "", jsonname = "";
+               let url = "", filename = "", itemname = "", jsonname = "", style = "";
 
                for (let n=0; n<opts.length;++n) {
                   let entry = opts[n];
