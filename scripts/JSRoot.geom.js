@@ -646,7 +646,7 @@ JSROOT.define(['d3', 'three', 'geobase', 'painter', 'base3d'], (d3, THREE, geo, 
 
                   if (m1.equals(m2)) return true;
                   if ((m1.determinant()>0) && (m2.determinant()<-0.9)) {
-                     flip = THREE.Vector3(1,1,-1);
+                     flip = new THREE.Vector3(1,1,-1);
                      m2 = m2.clone().scale(flip);
                      if (m1.equals(m2)) return true;
                   }
