@@ -1941,7 +1941,7 @@ JSROOT.define(['d3'], (d3) => {
          let res = this.getItemName(), obj = this.getObject();
          if (!res) res = obj && obj.fName ? obj.fName : "";
          if (!res) res = this.getClassName();
-         if (res.lenght > 20) res = res.substr(0, 17) + "...";
+         if (res.length > 20) res = res.substr(0, 17) + "...";
          return res;
       }
 
