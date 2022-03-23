@@ -1436,20 +1436,23 @@ JSROOT.define(['d3', 'painter'], (d3, jsrp) => {
 
            if (!d3node.empty()) {
                d3node.style('background','yellow');
-               if (hitem && hitem._title) d3node.attr('title', "Executing " + hitem._title);
+               if (hitem._title) d3node.attr('title', "Executing " + hitem._title);
             }
 
             return JSROOT.httpRequest(url + urlargs, 'text').then(res => {
-               if (!d3node.empty()) {
-                  let col = ((res != null) && (res != 'false')) ? 'green' : 'red';
-                  if (hitem && hitem._title) d3node.attr('title', hitem._title + " lastres=" + res);
-                  d3node.style('background', col);
-                  setTimeout(() => d3node.style('background', ''), 2000);
-                  if ((col == 'green') && ('_hreload' in hitem))
-                     this.reload();
-                  if ((col == 'green') && ('_update_item' in hitem))
-                     this.updateItems(hitem._update_item.split(";"));
-               }
+               if (d3node.empty()) return res;
+               let col = ((res != null) && (res != 'false')) ? 'green' : 'red';
+               if (hitem._title) d3node.attr('title', hitem._title + " lastres=" + res);
+               d3node.style('background', col);
+               setTimeout(() => {
+                  d3node.style('background', null);
+                  if (hitem._icon && d3node.classed("jsroot_fastcmd_btn"))
+                     d3node.style("background-image", `url("${hitem._icon}")`);
+               }, 2000);
+               if ((col == 'green') && ('_hreload' in hitem))
+                  this.reload();
+               if ((col == 'green') && ('_update_item' in hitem))
+                  this.updateItems(hitem._update_item.split(";"));
                return res;
             });
          });
@@ -1772,7 +1775,7 @@ JSROOT.define(['d3', 'painter'], (d3, jsrp) => {
             for (let n = 0; n < factcmds.length; ++n) {
                let btn = fastbtns.append("button")
                           .text("")
-                          .attr("class",'jsroot_fastcmd_btn')
+                          .attr("class","jsroot_fastcmd_btn")
                           .attr("item", this.itemFullName(factcmds[n]))
                           .attr("title", factcmds[n]._title)
                           .on("click", function() { h.executeCommand(d3.select(this).attr("item"), this); } );
