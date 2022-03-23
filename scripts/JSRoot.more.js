@@ -676,6 +676,16 @@ JSROOT.define(['d3', 'painter', 'gpad'], (d3, jsrp) => {
          return res;
       }
 
+      /** @summary Update function */
+      updateObject(obj /*, opt */) {
+         if (!this.matchObjectType(obj)) return false;
+         let tf1 = this.getObject();
+         JSROOT.extend(tf1, obj);
+         delete tf1._func; // ensure proper recalculation
+         return true;
+      }
+
+
       /** @summary Redraw function */
       redraw() {
 
