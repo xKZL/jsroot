@@ -2656,7 +2656,7 @@ JSROOT.define(['d3'], (d3) => {
              font_size = font.size, any_text = false, only_text = true;
 
          if ((f > 0) && ((f < 0.9) || (f > 1)))
-            font.size = Math.floor(font.size / f);
+            font.size = Math.max(1, Math.floor(font.size / f));
 
          if (max_sz && (font.size > max_sz))
             font.size = max_sz;
@@ -2768,7 +2768,7 @@ JSROOT.define(['d3'], (d3) => {
 
             if (!arg.rotate) { arg.x += arg.dx; arg.y += arg.dy; arg.dx = arg.dy = 0; }
 
-            // use translate and then rotate to avoid complex sign calculations
+            // use translate and then rotate to avoid complex sign caldevculations
             let trans = "";
             if (arg.y)
                trans = `translate(${Math.round(arg.x)},${Math.round(arg.y)})`;
