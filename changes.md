@@ -1,6 +1,6 @@
 # JSROOT changelog
 
-## Changes in dev
+## Changes in 6.4.0
 1. Fully remove jQuery and jQueryUI from JSROOT, replace by plane HTML/JavaScript
 2. Provide bootstrap-based menu - optionally
 3. Make "col" default draw option for TH2 in default JSROOT GUI
@@ -27,6 +27,7 @@
 24. Implement "circular" and "chord" draw options for TH2
 25. Implement "3d" draw options for TMultiGraph
 26. Support "A" hist option (do not draw axis) with 3D plots
+27. Fix custom labels handling
 
 
 ## Changes in 6.3.4
