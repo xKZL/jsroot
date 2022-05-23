@@ -1152,6 +1152,9 @@ JSROOT.define(['d3', 'painter', 'gpad'], (d3, jsrp) => {
          lines.push(this.getObjectHint());
 
          if (d && funcs) {
+            if (d.indx !== undefined)
+               lines.push("p = " + d.indx);
+
             lines.push("x = " + funcs.axisAsText("x", d.x));
             lines.push("y = " + funcs.axisAsText("y", d.y));
 
