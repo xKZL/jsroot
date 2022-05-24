@@ -1587,9 +1587,8 @@ JSROOT.define(['d3', 'painter'], (d3, jsrp) => {
       }
 
       /** @summary draw axes, return Promise which ready when drawing is completed  */
-      drawAxes(shrink_forbidden,
-                                                  disable_x_draw, disable_y_draw,
-                                                  AxisPos, has_x_obstacle, has_y_obstacle) {
+      drawAxes(shrink_forbidden, disable_x_draw, disable_y_draw,
+               AxisPos, has_x_obstacle, has_y_obstacle) {
 
          this.cleanAxesDrawings();
 
@@ -2017,7 +2016,7 @@ JSROOT.define(['d3', 'painter'], (d3, jsrp) => {
       /** @summary Fill context menu for the frame
         * @desc It could be appended to the histogram menus */
       fillContextMenu(menu, kind, obj) {
-         let main = this.getMainPainter(),
+         let main = this.getMainPainter(true),
              pp = this.getPadPainter(),
              pad = pp ? pp.getRootPad(true) : null;
 
