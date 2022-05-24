@@ -12,6 +12,7 @@ node_modules/
 libs/three/node_modules/
 libs/d3/node_modules/
 openui5dist
-docs/jsdocfull
-build
+docs/jsdocfull/
+docs/jsdoc/
+build/
 package-lock.json
