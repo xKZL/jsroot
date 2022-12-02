@@ -1,5 +1,9 @@
 # JSROOT changelog
 
+## Changes in 7.2.x
+1. Fix hist stats calculation with negative bins
+
+
 ## Changes in 7.2.1
 1. Fix - prevent glitch when enabling projection via context menu
 2. Fix - multi.json parsing

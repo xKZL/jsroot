@@ -1,4 +1,4 @@
-// https://root.cern/js/ v7.2.1
+// https://root.cern/js/ v7.2.2
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -7,11 +7,11 @@ typeof define === 'function' && define.amd ? define(['exports'], factory) :
 
 /** @summary version id
   * @desc For the JSROOT release the string in format "major.minor.patch" like "7.0.0" */
-let version_id = "7.2.1";
+let version_id = "7.2.x";
 
 /** @summary version date
   * @desc Release date in format day/month/year like "19/11/2021" */
-let version_date = "8/11/2022";
+let version_date = "2/12/2022";
 
 /** @summary version id and date
   * @desc Produced by concatenation of {@link version_id} and {@link version_date}
@@ -64845,7 +64845,7 @@ class TH1Painter$2 extends THistPainter {
 
       res.integral = stat_sumw;
 
-      if (stat_sumw > 0) {
+      if (Math.abs(stat_sumw) > 1e-300) {
          res.meanx = stat_sumwx / stat_sumw;
          res.meany = stat_sumwy / stat_sumw;
          res.rmsx = Math.sqrt(Math.abs(stat_sumwx2 / stat_sumw - res.meanx**2));
@@ -66315,7 +66315,7 @@ class TH2Painter$2 extends THistPainter {
          // stat_sumxy = histo.fTsumwxy;
       }
 
-      if (stat_sum0 > 0) {
+      if (Math.abs(stat_sum0) > 1e-300) {
          res.meanx = stat_sumx1 / stat_sum0;
          res.meany = stat_sumy1 / stat_sum0;
          res.rmsx = Math.sqrt(Math.abs(stat_sumx2 / stat_sum0 - res.meanx**2));
@@ -68932,7 +68932,7 @@ class TH3Painter extends THistPainter {
          stat_sumz2 = histo.fTsumwz2;
       }
 
-      if (stat_sum0 > 0) {
+      if (Math.abs(stat_sum0) > 1e-300) {
          res.meanx = stat_sumx1 / stat_sum0;
          res.meany = stat_sumy1 / stat_sum0;
          res.meanz = stat_sumz1 / stat_sum0;
@@ -103833,7 +103833,7 @@ class RH1Painter$2 extends RHistPainter {
 
       res.integral = stat_sumw;
 
-      if (stat_sumw > 0) {
+      if (Math.abs(stat_sumw) > 1e-300) {
          res.meanx = stat_sumwx / stat_sumw;
          res.meany = stat_sumwy / stat_sumw;
          res.rmsx = Math.sqrt(Math.abs(stat_sumwx2 / stat_sumw - res.meanx**2));
@@ -105037,7 +105037,7 @@ class RH2Painter$2 extends RHistPainter {
          }
       }
 
-      if (stat_sum0 > 0) {
+      if (Math.abs(stat_sum0) > 1e-300) {
          res.meanx = stat_sumx1 / stat_sum0;
          res.meany = stat_sumy1 / stat_sum0;
          res.rmsx = Math.sqrt(Math.abs(stat_sumx2 / stat_sum0 - res.meanx**2));
@@ -106658,7 +106658,7 @@ class RH3Painter extends RHistPainter {
          stat_sumz2 = histo.fTsumwz2;
       }
 
-      if (stat_sum0 > 0) {
+      if (Math.abs(stat_sum0) > 1e-300) {
          res.meanx = stat_sumx1 / stat_sum0;
          res.meany = stat_sumy1 / stat_sum0;
          res.meanz = stat_sumz1 / stat_sum0;
