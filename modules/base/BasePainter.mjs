@@ -550,7 +550,7 @@ class BasePainter {
       if (old_h && old_w && (old_h > 0) && (old_w > 0)) {
          if ((old_h !== rect.height) || (old_w !== rect.width))
             if ((check_level > 1) || (rect.width / old_w < 0.66) || (rect.width / old_w > 1.5) ||
-               (rect.height / old_h < 0.66) && (rect.height / old_h > 1.5)) rect.changed = true;
+               (rect.height / old_h < 0.66) || (rect.height / old_h > 1.5)) rect.changed = true;
       } else {
          rect.changed = true;
       }
